@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "package": "com.example.mistmod.mixin",
+  "compatibilityLevel": "JAVA_25",
+  "client": [
+    "EntityMixin",
+    "LevelSliceMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

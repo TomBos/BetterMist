@@ -1,0 +1,28 @@
+# Gradle & Fabric Loom
+.gradle/
+build/
+out/
+.kotlin/
+
+# Local / machine-specific files
+local.properties
+*.jar
+!gradle/wrapper/gradle-wrapper.jar
+
+# IDEs & editors
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs & crash reports
+*.log
+hs_err_pid*
