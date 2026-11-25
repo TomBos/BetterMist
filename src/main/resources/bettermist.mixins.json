@@ -1,8 +1,9 @@
 {
   "required": true,
-  "package": "com.example.mistmod.mixin",
+  "package": "com.tombos.bettermist.mixin",
   "compatibilityLevel": "JAVA_25",
   "client": [
+    "ClientTickMixin",
     "EntityMixin",
     "LevelSliceMixin"
   ],

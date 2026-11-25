@@ -1,20 +1,19 @@
 {
   "schemaVersion": 1,
-  "id": "mistmod",
+  "id": "bettermist",
   "version": "${version}",
-  "name": "Mist Mod",
-  "description": "Swaps Dwarven Mines white stained glass to black and makes Ghosts visible as Creepers.",
+  "name": "BetterMist",
+  "description": "Swaps stained glass to black and makes Ghosts visible in Dwarven Mines to reduce eye strain.",
   "environment": "client",
   "entrypoints": {
     "client": [
-      "com.example.mistmod.MistModClient"
+      "com.tombos.bettermist.BetterMistClient"
     ]
   },
   "mixins": [
-    "mistmod.mixins.json"
+    "bettermist.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.18.0",
-    "fabric-api": ">=0.161.0"
+    "fabricloader": ">=0.18.0"
   }
 }

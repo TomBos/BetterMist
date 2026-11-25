@@ -1,8 +1,8 @@
-package com.example.mistmod;
+package com.tombos.bettermist;
 
 import net.fabricmc.api.ClientModInitializer;
 
-public class MistModClient implements ClientModInitializer {
+public class BetterMistClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         SkyblockState.init();

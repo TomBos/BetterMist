@@ -1,15 +1,15 @@
-package com.example.mistmod.mixin;
+package com.tombos.bettermist.mixin;
 
-import com.example.mistmod.SkyblockState;
-import net.caffeinemc.mods.sodium.client.world.LevelSlice;
+import com.tombos.bettermist.SkyblockState;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.chunk.LevelChunkSection;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin(value = LevelSlice.class, remap = false)
+@Mixin(LevelChunkSection.class)
 public class LevelSliceMixin {
 
     @Inject(
@@ -18,7 +18,7 @@ public class LevelSliceMixin {
         cancellable = true
     )
     private void onGetBlockState(int x, int y, int z, CallbackInfoReturnable<BlockState> cir) {
-        if (!SkyblockState.inDwarvenMines) {
+        if (!SkyblockState.inAllowedArea) {
             return;
         }
         BlockState state = cir.getReturnValue();

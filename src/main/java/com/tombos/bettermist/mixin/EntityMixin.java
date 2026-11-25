@@ -1,6 +1,6 @@
-package com.example.mistmod.mixin;
+package com.tombos.bettermist.mixin;
 
-import com.example.mistmod.SkyblockState;
+import com.tombos.bettermist.SkyblockState;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.monster.Creeper;
 import org.spongepowered.asm.mixin.Mixin;
@@ -13,7 +13,7 @@ public abstract class EntityMixin {
 
     @Inject(method = "isInvisible", at = @At("HEAD"), cancellable = true)
     private void onIsInvisible(CallbackInfoReturnable<Boolean> cir) {
-        if (SkyblockState.inDwarvenMines && ((Object) this) instanceof Creeper) {
+        if (SkyblockState.inAllowedArea && ((Object) this) instanceof Creeper) {
             cir.setReturnValue(false);
         }
     }

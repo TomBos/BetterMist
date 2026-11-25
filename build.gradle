@@ -17,9 +17,6 @@ repositories {
 dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     implementation "net.fabricmc:fabric-loader:0.18.4"
-    implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
-
-    compileOnly fileTree(dir: 'libs', include: ['*.jar'])
 }
 
 java {
