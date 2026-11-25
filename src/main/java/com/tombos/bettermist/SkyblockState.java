@@ -9,10 +9,43 @@ import net.minecraft.world.scores.PlayerTeam;
 import net.minecraft.world.scores.Scoreboard;
 
 import java.util.Locale;
+import java.util.Set;
 
 public class SkyblockState {
     public static volatile boolean inAllowedArea = false;
     private static String lastArea = "";
+
+    private static final Set<String> ALLOWED_SUB_LOCATIONS = Set.of(
+            "the forge",
+            "forge basin",
+            "palace bridge",
+            "royal palace",
+            "aristocrat passage",
+            "hanging court",
+            "divan's gateway",
+            "far reserve",
+            "goblin burrows",
+            "miner's guild",
+            "great ice wall",
+            "the mist",
+            "mist",
+            "abandoned quarry",
+            "grand library",
+            "barracks of heroes",
+            "dwarven village",
+            "the lift",
+            "royal quarters",
+            "lava springs",
+            "cliffside veins",
+            "rampart's quarry",
+            "upper mines",
+            "royal mines",
+            "dwarven base camp",
+            "fossil research center",
+            "glacite tunnels",
+            "grandpa wolf's cave",
+            "great glacite lake"
+    );
 
     public static void init() {
         // Driven by ClientTickMixin -> SkyblockState.tick(...)
@@ -29,15 +62,18 @@ public class SkyblockState {
             return;
         }
 
-        String cleaned = rawLocation.replaceAll("§.", "").replace("⏣", "").trim();
+        String cleaned = rawLocation
+                .replaceAll("§.", "")
+                .replace("⏣", "")
+                .replace("", "")
+                .trim();
         String lower = cleaned.toLowerCase(Locale.ROOT);
 
         boolean allowed = false;
         if (!lower.contains("mineshaft")) {
             allowed = lower.contains("dwarven mines")
                     || lower.contains("glacite tunnels")
-                    || lower.equals("the mist")
-                    || lower.equals("mist");
+                    || ALLOWED_SUB_LOCATIONS.contains(lower);
         }
 
         setAreaState(mc, allowed, cleaned);
@@ -83,7 +119,7 @@ public class SkyblockState {
             PlayerTeam team = scoreboard.getPlayersTeam(entry.owner());
             Component line = PlayerTeam.formatNameForTeam(team, Component.literal(entry.owner()));
             String text = line.getString().replaceAll("§.", "").trim();
-            if (text.contains("⏣")) {
+            if (text.contains("⏣") || text.contains("")) {
                 return text;
             }
         }
