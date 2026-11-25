@@ -12,11 +12,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(LevelChunkSection.class)
 public class LevelSliceMixin {
 
-    @Inject(
-        method = "getBlockState(III)Lnet/minecraft/world/level/block/state/BlockState;",
-        at = @At("RETURN"),
-        cancellable = true
-    )
+    @Inject(method = "getBlockState", at = @At("RETURN"), cancellable = true)
     private void onGetBlockState(int x, int y, int z, CallbackInfoReturnable<BlockState> cir) {
         if (!SkyblockState.inAllowedArea) {
             return;
